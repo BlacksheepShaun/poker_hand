@@ -1,9 +1,15 @@
+//CS110B
+//Poker hand program
+//Module 4
+//Shun Lae Thawtar Khaing
+
 #include <iostream>
 using namespace std;
 
 const int NUM_CARD= 5;
-int count[10] = {0};
+int count[10] = {0};    // start with the count of number(0-9)- "0"
 
+//prototypes
 bool containsPair();
 bool containsTwoPair();
 bool containsThreeOfaKind();
@@ -25,9 +31,12 @@ int main()
 
     for(int i = 0; i<NUM_CARD; i++)
     {
-        count[hand[i]]++;
-    }
+        //count the number of hand[i]
+        count[hand[i]]++;       // get the hand[] value and count[cin >> hand[i]] <--your input number(2-9)
+                            // and increment by 1 whenever it found same value(count[cin >> hand[i]])
+    }        
 
+    //couts
     if(containsPair() && containsThreeOfaKind()==false)
     {
         cout << "Pair." << endl;
@@ -62,13 +71,13 @@ bool containsPair()
     
         for(int i = 0; i<10; i++)
         {
-            if(count[i] == 2)
+            if(count[i] == 2) //2 same number
             {
                 c++;
             }
         }
 
-    if(c == 1)
+    if(c == 1) //1- 1 pair
     {
         return true;
     }
@@ -82,13 +91,13 @@ bool containsTwoPair()
     
     for(int i = 0; i<10; i++)
     {
-        if(count[i] == 2)
+        if(count[i] == 2)   //2 same number
         {
             c++;
         }
     }
 
-    if(c== 2)
+    if(c== 2)   //1- 2 pair
     {
         return true;
     }
@@ -102,13 +111,13 @@ bool containsThreeOfaKind()
     
         for(int i = 0; i<10; i++)
         {
-            if(count[i] == 3)
+            if(count[i] == 3)   //3 same number
             {
                 c++;
             }
         }
 
-    if(c == 1)
+    if(c == 1) //1- 1(3pair)
     {
         return true;
     }
@@ -122,13 +131,13 @@ bool containsFourOfaKind()
     
         for(int i = 0; i<10; i++)
         {
-            if(count[i] == 4)
+            if(count[i] == 4)   //4 same numbers
             {
                 c++;
             }
         }
 
-    if(c == 1)
+    if(c == 1)  //1- 1(4 pair)
     {
         return true;
     }
@@ -198,3 +207,24 @@ bool containsFullHouse()
     return false;
 
 }
+
+
+
+/*SAMPLE OUTPUT
+[skhaing3@hills ~]$ ./a.out
+Enter 5 cards without face cards. Between 2-9.
+Card 1: 1
+Card 2: 1
+Card 3: 2
+Card 4: 2
+Card 5: 2
+Full House.
+[skhaing3@hills ~]$ ./a.out
+Enter 5 cards without face cards. Between 2-9.
+Card 1: 6
+Card 2: 6
+Card 3: 6
+Card 4: 6
+Card 5: 3
+Four of a kind.
+*/
